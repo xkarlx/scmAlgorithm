@@ -12,7 +12,7 @@ import useWindowDimensions from './components/useWindowDimensions';
 function App() {
   const { height, width } = useWindowDimensions();
   return (
-    <div className="App bg-light" style={{height:height}}  >
+    <div className="App " style={{height:height}}  >
      
       <RoutesApp  ></RoutesApp>
       

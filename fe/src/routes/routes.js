@@ -3,6 +3,7 @@ import { BrowserRouter, Router, Switch, Route, Redirect,useParams } from "react-
 
 
 import Home from "../views/home";
+import Template from "../views/template";
 import NoMatch from "../views/no_match";
 import NavbarApp from '../components/navbar/navbar';
 
@@ -14,14 +15,16 @@ function RoutesApp() {
     
     return (
         
-        <div className="d-flex flex-column vh-100 overflow-hidden">
+        <div className="d-flex flex-column ">
             <BrowserRouter>
             <NavbarApp></NavbarApp>
        
                
             <Switch >
               
-                <Route path="/" exact component={Home} />               
+                <Route path="/" exact component={Home} />  
+
+                 <Route path="/template" exact className=" " component={Template} />              
                 <Route component={NoMatch} />
                
             </Switch>

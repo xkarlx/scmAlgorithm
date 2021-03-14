@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navbar,Nav,NavDropdown } from 'react-bootstrap';
-import logo from '../../assets/image/logo192.png'
+import logo from '../../assets/image/chain.svg'
 import { useHistory, withRouter  } from "react-router-dom";
 
 /**
@@ -17,7 +17,7 @@ export function NavbarApp (){
 
     return (
         <Navbar className="sticky-top navbar-fill " collapseOnSelect expand="md" bg="dark" variant="dark">
-            <div className="container">
+            <div className="container-fluid">
             <Navbar.Brand>
             <img 
                 alt="Logo"                        
@@ -26,14 +26,21 @@ export function NavbarApp (){
                 width="scale"              
                 className="d-inline-block align-top"
             />{' '}
-            PCS sample
+            SCM Algorithm
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" float="right">
-                <Nav className="mr-auto">
+                <Nav className="">
                     <Nav.Link onClick={() => pushHistory("/")} >Home</Nav.Link>  
                 </Nav>              
-
+                <Nav>
+                    <NavDropdown title="Dropdown">
+                        <NavDropdown.Item onClick={() => pushHistory("/")}>Action</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/")}>Another action</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/")}>Something</NavDropdown.Item>                       
+                        <NavDropdown.Item onClick={() => pushHistory("/")}>Separated link</NavDropdown.Item>
+                    </NavDropdown>
+                </Nav>
 
                 
             </Navbar.Collapse>
