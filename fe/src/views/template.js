@@ -1,15 +1,17 @@
-import React, { Component,useRef } from 'react';
+import React, { Component,useRef, useState } from 'react';
 import { Card, ListGroup, Button } from 'react-bootstrap';
 
 import { withRouter } from "react-router-dom";
 import {useForm} from "react-hook-form"
-
+import stringifyObject from "stringify-object";
+import {axiosInstance} from "../actions/ajax";
 /**
  * /home
  */
 function Template() {
 
     const refApiTextExample = useRef(null)
+    const [state,setState] = useState("");
     const apiExample = "Test";
     const { register, handleSubmit, watch, errors } = useForm();
 
@@ -24,8 +26,33 @@ function Template() {
         
     }
 
-    const onSubmit = data => console.log(data);
+    
 
+    function onSubmit(data){
+
+        axiosInstance({
+            method: 'get',
+            url: 'test',
+            data: {
+                type: "hot",
+                limit: 10
+            }
+        })
+        .then(res => {
+            const pretty = stringifyObject(res.data, {
+                indent: '  ',
+                singleQuotes: false,
+                inlineCharacterLimit: 12
+            });
+            setState(pretty);
+            
+
+        })
+        .catch(err => {
+            setState("error");
+        })
+       
+    } 
 
     return (
         <div className="container-fluid ">
@@ -134,9 +161,7 @@ function Template() {
                         <div>
                             <Card>
                                 <Card.Body className="">
-                                    <form>
-                                        
-                                    </form>
+                                    <p style={{whiteSpace: "pre-line"}} className="mb-0">{state}</p>
                                 </Card.Body>
                             </Card>
                         </div>

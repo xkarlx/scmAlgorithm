@@ -7,6 +7,5 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = require('./app');
 
-
 //creates port 5000
 app.listen(process.env.PORT, () => console.log('Running on port 5000')); 

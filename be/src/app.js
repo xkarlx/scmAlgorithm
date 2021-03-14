@@ -7,7 +7,6 @@ const config = require('../configs/config.json');
 //serverFile = require('./server');
 
 const flash = require('express-flash')
-const session = require('express-session')
 
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser');
@@ -45,6 +44,7 @@ var allowCrossDomain = function(req, res, next) {
 */
 
 var allowCrossDomain = function (req, res, next) {
+  
   res.header('Access-Control-Allow-Origin', config.react.proxy);
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
