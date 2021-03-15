@@ -34,11 +34,10 @@ export function NavbarApp (){
                     <Nav.Link onClick={() => pushHistory("/")} >Home</Nav.Link>  
                 </Nav>              
                 <Nav>
-                    <NavDropdown title="Dropdown">
-                        <NavDropdown.Item onClick={() => pushHistory("/")}>Action</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => pushHistory("/")}>Another action</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => pushHistory("/")}>Something</NavDropdown.Item>                       
-                        <NavDropdown.Item onClick={() => pushHistory("/")}>Separated link</NavDropdown.Item>
+                    <NavDropdown title="Volkswirtschaftliche Standorte">
+                        <NavDropdown.Item onClick={() => pushHistory("/bodennutzung")}>Bodennutzung</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/kostenminimaler_wohnstandorte")}>Kostenminimaler Wohnstandorte</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/modell_huff")}>Modell von Huff</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
 

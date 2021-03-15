@@ -12,6 +12,7 @@ const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser');
 //import routes
 const testRoutes = require('./routes/testRoutes');
+const volkswirtschaftlicheStandortmodelleRoutes = require('./routes/volkswirtschaflicheStandortmodelleRoutes');
 
 const bodyParser = require('body-parser');
 //const app = express();
@@ -51,7 +52,7 @@ var allowCrossDomain = function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', true)
   // intercept OPTIONS method
   if ('OPTIONS' == req.method) {
-    res.send(200);
+    res.sendStatus(200);
   }
   else {
     next();
@@ -65,6 +66,7 @@ app.use(allowCrossDomain);
 
 //defining router
 app.use('/test', testRoutes);
+app.use('/volkswirtschafliche_standortmodelle',volkswirtschaftlicheStandortmodelleRoutes)
 
 
 
