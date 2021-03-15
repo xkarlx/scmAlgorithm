@@ -155,7 +155,7 @@ function Template() {
                                         <p className="mb-0 pb-0 text-primary"><small>test</small></p>
                                     </div>
                                     <div className="d-flex">
-                                        <p ref={refApiTextExample} className="mb-0 pb-0 mr-auto">Input</p>
+                                        <p ref={refApiTextExample} className="mb-0 pb-0 mr-auto">{apiExample}</p>
                                         <Button className="btn-priamary btn-sm" onClick={() => { coopyToClipboard() }}>Copy</Button>
                                     </div>
                                 </Card.Body>

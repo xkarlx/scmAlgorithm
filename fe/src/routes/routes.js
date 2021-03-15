@@ -11,6 +11,7 @@ import KostenminimalerWohnstandort from "../views/volkswirtschafteStandortmodell
 import ModellHuff from "../views/volkswirtschafteStandortmodelle/modell_huff";
 
 import NavbarApp from '../components/navbar/navbar';
+import LeaderFollowerModelle from "../views/volkswirtschafteStandortmodelle/leader_follower_modelle";
 
 
 /**
@@ -32,7 +33,7 @@ function RoutesApp() {
                 <Route path="/bodennutzung" exact component={Bodennutzung} />  
                 <Route path="/kostenminimaler_wohnstandorte" exact component={KostenminimalerWohnstandort} />  
                 <Route path="/modell_huff" exact component={ModellHuff} />  
-
+                <Route path="/leader_follower_modelle" exact component={LeaderFollowerModelle} />
 
                  <Route path="/template" exact className=" " component={Template} />              
                 <Route component={NoMatch} />

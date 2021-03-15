@@ -77,8 +77,8 @@ exports.getModelHuff = async (req, res, next) => {
   
     if("r" in req.body && "einrichtungen" in req.body){
   
-        locations = req.body["einrichtungen"]
-        sumA_EK = 0
+        var locations = req.body["einrichtungen"]
+        var sumA_EK = 0
         locations.forEach(element => {
             element.A_EK = element.w_E / Math.pow(element.d_KE,req.body["r"])
             sumA_EK+= element.A_EK
@@ -97,3 +97,98 @@ exports.getModelHuff = async (req, res, next) => {
   
   
 };
+
+
+exports.getLeaderFollowerModelle = async (req, res, next) => {
+    
+    if("s_r" in req.body && "s_l" in req.body && "nachfrage" in req.body){
+  
+        var demands = req.body["nachfrage"]
+        var s_r = req.body["s_r"]
+        var s_l = req.body["s_l"]
+        var marketShare = {}
+        var aggressivStrategy = {}
+        var maxStrategy ={}
+        if("leader" in req.body){
+            var leaderPosition = req.body["leader"]   
+            var marketShare = getMarketShareLeaderGiven(demands,s_r,s_l,leaderPosition)
+            var aggressivStrategyIndex = marketShare["leader"].indexOf(Math.min(...marketShare["leader"]))
+            aggressivStrategy = {"index": aggressivStrategyIndex,"marketShareLeader":marketShare["leader"][aggressivStrategyIndex],"marketShareFollower":marketShare["follower"][aggressivStrategyIndex],"marketShare":marketShare};
+            var maxStrategyIndex = marketShare["follower"].indexOf(Math.max(...marketShare["follower"]));
+            maxStrategy = {"index": maxStrategyIndex,"marketShareLeader":marketShare["leader"][maxStrategyIndex],"marketShareFollower":marketShare["follower"][maxStrategyIndex],"marketShare":marketShare};
+           
+        }else{
+
+        }
+
+        res.status(200).json({"aggressivStrategy": aggressivStrategy, "maxStrategy":maxStrategy
+                    })
+    }else{
+        res.status(200).send({"message":"import not correct defined"});
+    }
+  
+  
+};
+
+function getMarketShareLeaderGiven(demands,s_r,s_l,leaderPosition){
+    
+    marketShare={}
+    marketShare["follower"]=demands.map(x => 0)
+    marketShare["leader"]=demands.map(x => 0)
+
+    if(leaderPosition-s_l>=0){
+        leaderPositionLeft = leaderPosition-s_l
+    }else{
+        leaderPositionLeft = 0
+    }
+    if(leaderPosition-s_r<demands.length){
+        leaderPositionRight = leaderPosition+s_r
+    }else{
+        leaderPositionRight = 0
+    }
+
+    for(var followerPosition=0; followerPosition<demands.length;followerPosition++){
+        if(followerPosition != leaderPosition){
+            
+        for(var i=-s_l+followerPosition; i<=s_r+followerPosition;i++){
+            
+            if(i>=0 && i < demands.length ){
+                
+                if(i<=followerPosition && followerPosition < leaderPosition){
+                    marketShare["follower"][followerPosition] += demands[i]
+                    
+                }else if(Math.abs(i-followerPosition)==Math.abs(i-leaderPosition)){
+                    marketShare["follower"][followerPosition] += demands[i]/2
+                    
+                }else if(Math.abs(i-followerPosition)<Math.abs(i-leaderPosition)){
+                    marketShare["follower"][followerPosition] += demands[i]
+                }
+            }
+        }  
+        
+        for(var i=leaderPositionLeft; i<=leaderPositionRight;i++){
+            
+            if(i>=0 && i < demands.length ){
+               
+                if(Math.abs(i-followerPosition)-Math.abs(i-leaderPosition)>0){
+                    marketShare["leader"][followerPosition] += demands[i]
+                    
+                }else if(Math.abs(i-followerPosition)-Math.abs(i-leaderPosition)==0){
+                    marketShare["leader"][followerPosition] += demands[i]/2
+                }
+            }
+        }   
+        
+        
+        }else{
+            marketShare["leader"][leaderPosition] = Infinity
+            marketShare["follower"][leaderPosition] = 0
+        }
+
+    }
+
+
+    
+    return marketShare
+
+}

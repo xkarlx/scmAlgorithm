@@ -38,6 +38,7 @@ export function NavbarApp (){
                         <NavDropdown.Item onClick={() => pushHistory("/bodennutzung")}>Bodennutzung</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/kostenminimaler_wohnstandorte")}>Kostenminimaler Wohnstandorte</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/modell_huff")}>Modell von Huff</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/leader_follower_modelle")}>Leader Follower Modelle</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
 
