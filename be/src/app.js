@@ -13,6 +13,9 @@ const cookieParser = require('cookie-parser');
 //import routes
 const testRoutes = require('./routes/testRoutes');
 const volkswirtschaftlicheStandortmodelleRoutes = require('./routes/volkswirtschaflicheStandortmodelleRoutes');
+const standortplanungEbeneRoutes = require('./routes/standortplanungEbeneRoutes');
+const standortplanungNetzwerkenRoutes = require('./routes/standortplanungNetzwerkenRoutes');
+const gebietsplanungRoutes = require('./routes/gebietsplanungRoutes');
 
 const bodyParser = require('body-parser');
 //const app = express();
@@ -67,6 +70,10 @@ app.use(allowCrossDomain);
 //defining router
 app.use('/test', testRoutes);
 app.use('/volkswirtschafliche_standortmodelle',volkswirtschaftlicheStandortmodelleRoutes)
+app.use('/standortplanung_ebene',standortplanungEbeneRoutes)
+app.use('/standortplanung_netzwerken',standortplanungNetzwerkenRoutes)
+app.use('/gebietsplanung',gebietsplanungRoutes)
+
 
 
 

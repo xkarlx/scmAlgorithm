@@ -41,6 +41,35 @@ export function NavbarApp (){
                         <NavDropdown.Item onClick={() => pushHistory("/leader_follower_modelle")}>Leader Follower Modelle</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
+                <Nav>
+                    <NavDropdown title="Standortplanung Ebene">
+                        <NavDropdown.Item onClick={() => pushHistory("/distanzmessung")}>Distanzmessung</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_ebene_l1")}>1-Medianprobleme mit l_1 Metrik</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_ebene_l22")}>1-Medianprobleme mit l_2^2 Entfernung</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_ebene_l2")}>1-Medianprobleme mit l_2 Metrik</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_ebene_l1")}>1-Centerprobleme mit l_1 Metrik</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_ebene_linf")}>1-Centerproblme mit l_inf Metrik</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_ebene_l2")}>1-Centerprobleme mit l2 Metrik</NavDropdown.Item>
+                    </NavDropdown>
+                </Nav>
+                <Nav>
+                    <NavDropdown title="Standortplanung Netzwerken">
+                        <NavDropdown.Item onClick={() => pushHistory("/distanzmessung_netzwerk")}>Distanzmessung Netzwerk</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/analytische_betrachtung_distanzfunktion")}>Analytische Betrachtung Distanzfunktion</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_knotenbeschraenkt")}>1-Medianprobleme Knotenbeschränkt</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_absolut")}>1 Medianprobleme Absolut</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_knotenbeschraenkt")}>1-Centerprobleme Knotenbeschränkt</NavDropdown.Item>
+                    </NavDropdown>
+                </Nav>
+
+
+
+                <Nav>
+                    <NavDropdown title="Gebietsplanung">
+                        <NavDropdown.Item onClick={() => pushHistory("/kompaktheitsmasse")}>Kompaktheitsmaße</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/recursive_partioning_algorithmus")}>Recursive-Partioning-Algorithmus</NavDropdown.Item>
+                   </NavDropdown>
+                </Nav>
 
                 
             </Navbar.Collapse>
