@@ -15,8 +15,8 @@ import Distanzmessung from "../views/standortplanungEbene/distanzmessung";
 import MedianproblemeL1 from "../views/standortplanungEbene/1medinaproblemeEbeneL1";
 import MedianproblemeL2 from "../views/standortplanungEbene/1medinaproblemeEbeneL2";
 import MedianproblemeL22 from "../views/standortplanungEbene/1medinaproblemeEbeneL22";
-import CenterproblemeL1 from "../views/standortplanungEbene/1centerproblemeEbeneL1";
-import CenterproblmeLinf from "../views/standortplanungEbene/1centerproblemeEbeneLinf";
+import CenterproblemeEbeneL1 from "../views/standortplanungEbene/1centerproblemeEbeneL1";
+import CenterproblemeEbeneGewichtet from "../views/standortplanungEbene/1centerproblemeEbeneGewichtet";
 import CenterproblemeL2 from "../views/standortplanungEbene/1centerproblemeEbeneL2";
 
 import MedianproblemeKnotenbeschraenkt from "../views/standortplanungNetzwerke/1MedianproblemeKnotenbeschraenkt";
@@ -58,8 +58,8 @@ function RoutesApp() {
                 <Route path="/1medianprobleme_ebene_l1" exact component={MedianproblemeL1} />  
                 <Route path="/1medianprobleme_ebene_l22" exact component={MedianproblemeL22} />
                 <Route path="/1medianprobleme_ebene_l2" exact component={MedianproblemeL2} />
-                <Route path="/1centerprobleme_ebene_l1" exact component={CenterproblemeL1} />  
-                <Route path="/1centerprobleme_ebene_linf" exact component={CenterproblmeLinf} />
+                <Route path="/1centerprobleme_ebene_l1" exact component={CenterproblemeEbeneL1} />  
+                <Route path="/1centerprobleme_ebene_gewichtet" exact component={CenterproblemeEbeneGewichtet} />
                 <Route path="/1centerprobleme_ebene_l2" exact component={CenterproblemeL2} />
 
                 <Route path="/distanzmessung_netzwerk" exact component={DistanzmessungNetzwerk} />

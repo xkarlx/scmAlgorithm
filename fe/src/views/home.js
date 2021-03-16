@@ -79,8 +79,8 @@ function Home() {
                                    <h6 className="mr-3"> 1-Centerprobleme mit l_1 Metrik </h6>
                                    <small></small>
                                 </ListGroup.Item>
-                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1centerprobleme_ebene_linf")}}>
-                                   <h6 className="mr-3"> 1-Centerproblme mit l_inf Metrik </h6>
+                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1centerprobleme_ebene_gewichtet")}}>
+                                   <h6 className="mr-3"> Gewichtete 1-Centerproblme mit l_1 </h6>
                                    <small></small>
                                 </ListGroup.Item>
                                 <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1centerprobleme_ebene_l2")}}>

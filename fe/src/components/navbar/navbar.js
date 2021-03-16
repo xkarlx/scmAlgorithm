@@ -48,7 +48,7 @@ export function NavbarApp (){
                         <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_ebene_l22")}>1-Medianprobleme mit l_2^2 Entfernung</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_ebene_l2")}>1-Medianprobleme mit l_2 Metrik</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_ebene_l1")}>1-Centerprobleme mit l_1 Metrik</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_ebene_linf")}>1-Centerproblme mit l_inf Metrik</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_ebene_gewichtet")}>1-Centerprobleme mit l_1 Gewichtet</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_ebene_l2")}>1-Centerprobleme mit l2 Metrik</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>

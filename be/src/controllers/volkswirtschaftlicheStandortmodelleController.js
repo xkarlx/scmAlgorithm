@@ -26,6 +26,11 @@ exports.getBodennutzung = async (req, res, next) => {
 
     data = req.body
     result = []
+
+    data.forEach(element => {
+        element.d_max = element.Gewinn/element.Transportkosten
+    })
+
     data.sort(function(a, b) {
         return a.Transportkosten - b.Transportkosten;
       });
@@ -45,8 +50,9 @@ exports.getBodennutzung = async (req, res, next) => {
         data.forEach(element => {
             element.d = ( last_push.Gewinn - element.Gewinn ) / (last_push.Transportkosten - element.Transportkosten )
         });
+        console.log(data,last_push)
+        data = data.filter(element =>  element.d >= 0 && element.d < Math.min(element.d_max,last_push.d_max))
         
-        var data = data.filter(element =>  element.d >= 0)
         data.sort(function(a, b) {
             return a.d - b.d;
           })
@@ -64,6 +70,7 @@ exports.getBodennutzung = async (req, res, next) => {
     d_max = last_element.Gewinn / last_element.Transportkosten
     result.forEach(element => {
         element.d = Math.round(element.d * 100) / 100
+        element.d_max = Math.round(element.d_max * 100) / 100
     });
 
     res.status(200).json({ data: result, d_max :  Math.round(d_max * 100) / 100
