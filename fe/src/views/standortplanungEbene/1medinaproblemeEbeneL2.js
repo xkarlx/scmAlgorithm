@@ -18,7 +18,7 @@ function MedianproblemeEbeneL2() {
     const apiExample2 = '{"list":[{"x":1,"y":4,"w":2},{"x":2,"y":6,"w":3},{"x":5,"y":1,"w":1},{"x":4,"y":2,"w":1},{"x":6,"y":5,"w":2}],"delta":0.001,"center":{"x":4,"y":5}}';
     const { register, handleSubmit, watch, errors } = useForm();
 
-    function coopyToClipboard(refApiText) {
+    function copyToClipboard(refApiText) {
         console.log(refApiText["current"].innerText, refApiText)
         const el = document.createElement('textarea');
         el.value = refApiText["current"].innerText;
@@ -125,7 +125,7 @@ function MedianproblemeEbeneL2() {
                                     </div>
                                     <div className="d-flex">
                                         <p ref={refApiTextExample} className="mb-0 pb-0 mr-auto">{apiExample}</p>
-                                        <Button className="btn-priamary btn-sm" onClick={() => { coopyToClipboard(refApiTextExample) }}>Copy</Button>
+                                        <Button className="btn-priamary btn-sm" onClick={() => { copyToClipboard(refApiTextExample) }}>Copy</Button>
                                     </div>
                                 </Card.Body>
                                 <Card.Body className=" mb-0 mt-0 pt-2 pb-2 align-items-center">
@@ -134,7 +134,7 @@ function MedianproblemeEbeneL2() {
                                     </div>
                                     <div className="d-flex">
                                         <p ref={refApiTextExample2} className="mb-0 pb-0 mr-auto">{apiExample2}</p>
-                                        <Button className="btn-priamary btn-sm" onClick={() => { coopyToClipboard(refApiTextExample2) }}>Copy</Button>
+                                        <Button className="btn-priamary btn-sm" onClick={() => { copyToClipboard(refApiTextExample2) }}>Copy</Button>
                                     </div>
                                 </Card.Body>
                             </Card>

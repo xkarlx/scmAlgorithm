@@ -21,7 +21,7 @@ function LeaderFollowerModelle() {
     const apiExample2 = '{"s_r":2, "s_l":2, "nachfrage": [6,8,11,8,9,7,5,6,8,10,8,6]}';
     const { register, handleSubmit, watch, errors } = useForm();
 
-    function coopyToClipboard() {
+    function copyToClipboard() {
         
         const el = document.createElement('textarea');
         el.value = refApiTextExample["current"].innerText;
@@ -136,7 +136,7 @@ function LeaderFollowerModelle() {
                                     </div>
                                     <div className="d-flex">
                                         <p ref={refApiTextExample} className="mb-0 pb-0 mr-auto">{apiExample}</p>
-                                        <Button className="btn-priamary btn-sm" onClick={() => { coopyToClipboard() }}>Copy</Button>
+                                        <Button className="btn-priamary btn-sm" onClick={() => { copyToClipboard() }}>Copy</Button>
                                     </div>                                   
                                 </Card.Body>
                             </Card>

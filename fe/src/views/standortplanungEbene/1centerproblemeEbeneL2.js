@@ -19,7 +19,7 @@ function CenterproblemeEbeneL2() {
     const apiExample = '[{"x":1,"y":4},{"x":2,"y":6},{"x":5,"y":1},{"x":4,"y":2},{"x":6,"y":5}]';
     const { register, handleSubmit, watch, errors } = useForm();
 
-    function coopyToClipboard() {
+    function copyToClipboard() {
         console.log(refApiTextExample["current"].innerText, refApiTextExample)
         const el = document.createElement('textarea');
         el.value = refApiTextExample["current"].innerText;
@@ -116,7 +116,7 @@ function CenterproblemeEbeneL2() {
                                     </div>
                                     <div className="d-flex">
                                         <p ref={refApiTextExample} className="mb-0 pb-0 mr-auto">{apiExample}</p>
-                                        <Button className="btn-priamary btn-sm" onClick={() => { coopyToClipboard() }}>Copy</Button>
+                                        <Button className="btn-priamary btn-sm" onClick={() => { copyToClipboard() }}>Copy</Button>
                                     </div>
                                 </Card.Body>
                             </Card>
