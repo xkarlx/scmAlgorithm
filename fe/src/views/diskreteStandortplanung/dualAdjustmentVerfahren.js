@@ -9,7 +9,7 @@ import ReactJson from 'react-json-view'
 /**
  * /home
  */
-function Template() {
+function DualAdjustmentVerfahren() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
@@ -27,14 +27,12 @@ function Template() {
 
     }
 
-
-
     function onSubmit(data) {
         
         var json_data=JSON.parse(data["data"])
         axiosInstance({
             method: 'post',
-            url: 'test',
+            url: '/diskrete_standortplanung/dual_adjustment_verfahren',
             data: {
                 ...json_data
             }
@@ -201,4 +199,4 @@ function Template() {
 
 }
 
-export default withRouter(Template);
+export default withRouter(DualAdjustmentVerfahren);

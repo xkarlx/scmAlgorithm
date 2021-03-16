@@ -9,7 +9,7 @@ import ReactJson from 'react-json-view'
 /**
  * /home
  */
-function Template() {
+function Konstruktionsheuristik() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
@@ -33,11 +33,10 @@ function Template() {
         
         var json_data=JSON.parse(data["data"])
         axiosInstance({
-            method: 'get',
-            url: 'test',
+            method: 'post',
+            url: 'diskrete_standortplanung/konstruktionsheuristik',
             data: {
-                type: "hot",
-                limit: 10
+                ...json_data
             }
         })
             .then(res => {
@@ -202,4 +201,4 @@ function Template() {
 
 }
 
-export default withRouter(Template);
+export default withRouter(Konstruktionsheuristik);

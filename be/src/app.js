@@ -16,6 +16,7 @@ const volkswirtschaftlicheStandortmodelleRoutes = require('./routes/volkswirtsch
 const standortplanungEbeneRoutes = require('./routes/standortplanungEbeneRoutes');
 const standortplanungNetzwerkenRoutes = require('./routes/standortplanungNetzwerkenRoutes');
 const gebietsplanungRoutes = require('./routes/gebietsplanungRoutes');
+const diskreteStandortplanungRoutes = Require("./routes/diskreteStandortplanungRoutes");
 
 const bodyParser = require('body-parser');
 //const app = express();
@@ -73,7 +74,7 @@ app.use('/volkswirtschafliche_standortmodelle',volkswirtschaftlicheStandortmodel
 app.use('/standortplanung_ebene',standortplanungEbeneRoutes)
 app.use('/standortplanung_netzwerken',standortplanungNetzwerkenRoutes)
 app.use('/gebietsplanung',gebietsplanungRoutes)
-
+app.use('/diskrete_standortplanung',diskreteStandortplanungRoutes)
 
 
 

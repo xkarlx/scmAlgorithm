@@ -9,7 +9,7 @@ import ReactJson from 'react-json-view'
 /**
  * /home
  */
-function Template() {
+function DualAscentVerfahren() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
@@ -33,11 +33,10 @@ function Template() {
         
         var json_data=JSON.parse(data["data"])
         axiosInstance({
-            method: 'get',
-            url: 'test',
+            method: 'post',
+            url: '/diskrete_standortplanung/dual_ascent_verfahren',
             data: {
-                type: "hot",
-                limit: 10
+                ...json_data
             }
         })
             .then(res => {
@@ -56,8 +55,8 @@ function Template() {
         <div className="container-fluid ">
             <div className="row ">
                 <div className="col-12 mt-3">
-                    <h2 className="mb-0">Template</h2>
-                    <p>Test</p>
+                    <h2 className="mb-0">Dual Ascent Verfahren</h2>
+                    <p>DUALOC-Verfahren</p>
                 </div>
             </div>
             <div className="row ">
@@ -202,4 +201,4 @@ function Template() {
 
 }
 
-export default withRouter(Template);
+export default withRouter(DualAscentVerfahren);
