@@ -66,7 +66,7 @@ function ModellvonHuff() {
             </div>
             <div className="row ">
 
-                <div className="col-md-6 overflow-auto vh-100">
+                <div className="col-md-6">
                    
                     <div className="mt-3">
                         <div>

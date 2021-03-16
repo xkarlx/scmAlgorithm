@@ -34,7 +34,7 @@ export function NavbarApp (){
                     <Nav.Link onClick={() => pushHistory("/")} >Home</Nav.Link>  
                 </Nav>              
                 <Nav>
-                    <NavDropdown title="Volkswirtschaftliche Standorte">
+                    <NavDropdown title="Volkswirt.">
                         <NavDropdown.Item onClick={() => pushHistory("/bodennutzung")}>Bodennutzung</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/kostenminimaler_wohnstandorte")}>Kostenminimaler Wohnstandorte</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/modell_huff")}>Modell von Huff</NavDropdown.Item>
@@ -42,7 +42,7 @@ export function NavbarApp (){
                     </NavDropdown>
                 </Nav>
                 <Nav>
-                    <NavDropdown title="Standortplanung Ebene">
+                    <NavDropdown title="Ebene">
                         <NavDropdown.Item onClick={() => pushHistory("/distanzmessung")}>Distanzmessung</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_ebene_l1")}>1-Medianprobleme mit l_1 Metrik</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_ebene_l22")}>1-Medianprobleme mit l_2^2 Entfernung</NavDropdown.Item>
@@ -53,7 +53,7 @@ export function NavbarApp (){
                     </NavDropdown>
                 </Nav>
                 <Nav>
-                    <NavDropdown title="Standortplanung Netzwerken">
+                    <NavDropdown title="Netzwerke">
                         <NavDropdown.Item onClick={() => pushHistory("/distanzmessung_netzwerk")}>Distanzmessung Netzwerk</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/analytische_betrachtung_distanzfunktion")}>Analytische Betrachtung Distanzfunktion</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_knotenbeschraenkt")}>1-Medianprobleme Knotenbeschränkt</NavDropdown.Item>
@@ -65,7 +65,7 @@ export function NavbarApp (){
 
 
                 <Nav>
-                    <NavDropdown title="Gebietsplanung">
+                    <NavDropdown title="Gebietspl.">
                         <NavDropdown.Item onClick={() => pushHistory("/kompaktheitsmasse")}>Kompaktheitsmaße</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/recursive_partioning_algorithmus")}>Recursive-Partioning-Algorithmus</NavDropdown.Item>
                    </NavDropdown>

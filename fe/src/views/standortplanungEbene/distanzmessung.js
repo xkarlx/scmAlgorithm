@@ -6,14 +6,16 @@ import { useForm } from "react-hook-form"
 import stringifyObject from "stringify-object";
 import { axiosInstance } from "../../actions/ajax";
 import ReactJson from 'react-json-view'
+
+import imageDistanzmessung from "../../assets/image/Distanzmessung.PNG";
 /**
  * /home
  */
-function Template() {
+function Distanzmessung() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
-    const apiExample = "Test";
+    const apiExample = '{"x1":2, "y1":4,"x2":4,"y2":2}';
     const { register, handleSubmit, watch, errors } = useForm();
 
     function coopyToClipboard() {
@@ -33,11 +35,10 @@ function Template() {
         
         var json_data=JSON.parse(data["data"])
         axiosInstance({
-            method: 'get',
-            url: 'test',
+            method: 'post',
+            url: 'standortplanung_ebene/distanzmessung',
             data: {
-                type: "hot",
-                limit: 10
+                ...json_data
             }
         })
             .then(res => {
@@ -56,73 +57,27 @@ function Template() {
         <div className="container-fluid ">
             <div className="row ">
                 <div className="col-12 mt-3">
-                    <h2 className="mb-0">Template</h2>
-                    <p>Test</p>
+                    <h2 className="mb-0">Distanzmessung</h2>
+                    <p>Berechnung der Transportkosten zwischen zwei Standorten reduziert</p>
                 </div>
             </div>
             <div className="row ">
 
-                <div className="col-md-6 overflow-auto vh-100">
+                <div className="col-md-6 ">
                     <div className="mt-3">
                         <div>
-                            <h3 className="mb-0">Formula</h3>
+                            <h3 className="mb-0">Lecture</h3>
                             <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
                         </div>
                         <div className="d-flex flex-column  justify-content-center align-items-center">
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={imageDistanzmessung}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
+                            />                           
                         </div>
-                    </div>
-                    <div className="mt-3">
-                        <div>
-                            <h3 className="mb-0">Example</h3>
-                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
-                        </div>
-                        <div className="d-flex flex-column  justify-content-center align-items-center">
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                        </div>
-                    </div>
-                    <div className="mt-3">
-                        <div>
-                            <h3 className="mb-0">Excercise</h3>
-                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
-                        </div>
-                        <div className="d-flex flex-column  justify-content-center align-items-center">
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
                 <div className="col-md-6 ">
                     <div className="mt-3">
@@ -141,10 +96,25 @@ function Template() {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>K</td>
-                                        <td>€</td>
-                                        <td>Kosten</td>
-                                    </tr>                                    
+                                        <td>x1</td>
+                                        <td></td>
+                                        <td>x-Koortinate Punkt 1</td>
+                                    </tr>  
+                                    <tr>
+                                        <td>y1</td>
+                                        <td></td>
+                                        <td>y-Koortinate Punkt 1</td>
+                                    </tr> 
+                                    <tr>
+                                        <td>x2</td>
+                                        <td></td>
+                                        <td>x-Koortinate Punkt 2</td>
+                                    </tr> 
+                                    <tr>
+                                        <td>y1</td>
+                                        <td></td>
+                                        <td>y-Koortinate Punkt 2</td>
+                                    </tr>                                   
                                 </tbody>
                             </Table>
                         </div>
@@ -152,7 +122,7 @@ function Template() {
                             <Card>
                                 <Card.Body className=" mb-0 mt-0 pt-2 pb-2 align-items-center">
                                     <div>
-                                        <p className="mb-0 pb-0 text-primary"><small>test</small></p>
+                                        <p className="mb-0 pb-0 text-primary"><small>2 Punkte</small></p>
                                     </div>
                                     <div className="d-flex">
                                         <p ref={refApiTextExample} className="mb-0 pb-0 mr-auto">{apiExample}</p>
@@ -202,4 +172,4 @@ function Template() {
 
 }
 
-export default withRouter(Template);
+export default withRouter(Distanzmessung);
