@@ -124,6 +124,40 @@ function Home() {
                     </Card>
                    
                 </div>
+                <div className="col-md-6 mt-3">
+                    <Card>
+                        <Card.Header>
+                        Diskrete Standortplanung: Vorlesung 5
+                        </Card.Header>
+                        <Card.Body>
+                            <ListGroup>                    
+                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/dual_adjustment_verfahren")}}>
+                                   <h6 className="mr-3"> Dual-Adjustment Verfahren </h6>
+                                   <small></small>
+                                </ListGroup.Item>                    
+                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/dual_ascent_verfahren")}}>
+                                   <h6 className="mr-3"> Dual-Ascent Verfahren </h6>
+                                   <small></small>
+                                </ListGroup.Item>
+                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/greedy_heuristik")}}>
+                                   <h6 className="mr-3"> Greedy-Heuristik </h6>
+                                   <small></small>
+                                </ListGroup.Item>
+                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/interchange_heuristik")}}>
+                                   <h6 className="mr-3"> Interchange Heuristik </h6>
+                                   <small></small>
+                                </ListGroup.Item>
+                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/konstruktionsheuristik")}}>
+                                   <h6 className="mr-3"> Konstruktionsheuristik </h6>
+                                   <small></small>
+                                </ListGroup.Item>                            
+                            </ListGroup>
+                        </Card.Body>
+                    </Card>
+                   
+                </div>
+
+
 
 
                 <div className="col-md-6 mt-3">

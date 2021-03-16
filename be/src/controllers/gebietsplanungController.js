@@ -1,6 +1,6 @@
 exports.getRecursivePartioningAlgorithmus = async (req, res, next) => {
 
-
+    //TODO KPI & 4 Beriche
 
 }
 

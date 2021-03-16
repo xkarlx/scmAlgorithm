@@ -28,6 +28,12 @@ import DistanzmessungNetzwerk from "../views/standortplanungNetzwerke/distanzmes
 import Kompaktheitsmasse from "../views/gebietsplanung/kompaktheitsmaße";
 import RecursivePartioningAlgorithmus from "../views/gebietsplanung/recursivePartioningAlgorithmus";
 
+import DualAdjustmentVerfahren from "../views/diskreteStandortplanung/dualAdjustmentVerfahren";
+import DualAscentVerfahren from "../views/diskreteStandortplanung/dualAscentVerfahren";
+import GreedyHeuristik from "../views/diskreteStandortplanung/greedyHeuristik";
+import InterchangeHeuristik from "../views/diskreteStandortplanung/internchangeHeuristik";
+import Konstruktionsheuristik from "../views/diskreteStandortplanung/konstruktionsheuristik";
+
 
 import NavbarApp from '../components/navbar/navbar';
 
@@ -67,6 +73,12 @@ function RoutesApp() {
                 <Route path="/1medianprobleme_knotenbeschraenkt" exact component={MedianproblemeKnotenbeschraenkt} />  
                 <Route path="/1medianprobleme_absolut" exact component={MedianproblemeAbsolut} />
                 <Route path="/1centerprobleme_knotenbeschraenkt" exact component={CenterproblemeKnotenbeschraenkt} />
+
+                <Route path="/dual_adjustment_verfahren" exact component={DualAdjustmentVerfahren} />
+                <Route path="/dual_ascent_verfahren" exact component={DualAscentVerfahren} />
+                <Route path="/greedy_heuristik" exact component={GreedyHeuristik} />  
+                <Route path="/interchange_heuristik" exact component={InterchangeHeuristik} />
+                <Route path="/konstruktionsheuristik" exact component={Konstruktionsheuristik} />
 
                 <Route path="/kompaktheitsmasse" exact component={Kompaktheitsmasse} />
                 <Route path="/recursive_partioning_algorithmus" exact component={RecursivePartioningAlgorithmus} />

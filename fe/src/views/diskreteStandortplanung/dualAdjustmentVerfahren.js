@@ -4,17 +4,16 @@ import { Card, ListGroup, Button, Table } from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import stringifyObject from "stringify-object";
-import { axiosInstance } from "../../actions/ajax";
+import { axiosInstance } from "../actions/ajax";
 import ReactJson from 'react-json-view'
 /**
  * /home
  */
-function RecursivepartioningAlgorithmus() {
+function Template() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
-    const apiExample = '{"list":[{"name":1,"x": 2,"y":2 , "w":4},{"name":2,"x": 2,"y":9 , "w":3},{"name":3,"x": 4,"y":8 , "w":3},{"name":4,"x": 3,"y":3 , "w":2},{"name":8,"x": 3,"y":5 , "w":4},{"name":9,"x": 4,"y":4 , "w":2},     \
-                                    {"name":10,"x": 5,"y":7 , "w":3}],"betha":0.5}';
+    const apiExample = "Test";
     const { register, handleSubmit, watch, errors } = useForm();
 
     function copyToClipboard() {
@@ -35,7 +34,7 @@ function RecursivepartioningAlgorithmus() {
         var json_data=JSON.parse(data["data"])
         axiosInstance({
             method: 'post',
-            url: 'gebietsplanung/recursive_partioning_algorithmus',
+            url: 'test',
             data: {
                 ...json_data
             }
@@ -56,14 +55,76 @@ function RecursivepartioningAlgorithmus() {
         <div className="container-fluid ">
             <div className="row ">
                 <div className="col-12 mt-3">
-                    <h2 className="mb-0">Recursive Partitioning Algorithmus</h2>
-                    <p>Teilen der Gebiete in 4 Bereiche & KPI-Berechnung</p>
+                    <h2 className="mb-0">Dual-Adjustment Verfahren</h2>
+                    <p>Teil des DUALOC-Verfahren</p>
                 </div>
             </div>
             <div className="row ">
 
-                <div className="col-md-6">
-                <div className="mt-3">
+                <div className="col-md-6 overflow-auto vh-100">
+                    <div className="mt-3">
+                        <div>
+                            <h3 className="mb-0">Formula</h3>
+                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
+                        </div>
+                        <div className="d-flex flex-column  justify-content-center align-items-center">
+                            <img
+                                src="https://via.placeholder.com/150"
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                            <img
+                                src="https://via.placeholder.com/150"
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                        </div>
+                    </div>
+                    <div className="mt-3">
+                        <div>
+                            <h3 className="mb-0">Example</h3>
+                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
+                        </div>
+                        <div className="d-flex flex-column  justify-content-center align-items-center">
+                            <img
+                                src="https://via.placeholder.com/150"
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                            <img
+                                src="https://via.placeholder.com/150"
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                        </div>
+                    </div>
+                    <div className="mt-3">
+                        <div>
+                            <h3 className="mb-0">Excercise</h3>
+                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
+                        </div>
+                        <div className="d-flex flex-column  justify-content-center align-items-center">
+                            <img
+                                src="https://via.placeholder.com/150"
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                            <img
+                                src="https://via.placeholder.com/150"
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-6 ">
+                    <div className="mt-3">
                         <div>
                             <h3 className="mb-0">API introduction</h3>
                             <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
@@ -79,25 +140,10 @@ function RecursivepartioningAlgorithmus() {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                            <td>x</td>
-                                            <td></td>
-                                            <td>x-Koordinate</td>
-                                        </tr>
-                                        <tr>
-                                            <td>y</td>
-                                            <td></td>
-                                            <td>y-Koordinate</td>
-                                        </tr>
-                                        <tr>
-                                            <td>w</td>
-                                            <td></td>
-                                            <td>Gewichte</td>
-                                        </tr>   
-                                        <tr>
-                                            <td>betha</td>
-                                            <td></td>
-                                            <td>optional (default: 0.5)</td>
-                                        </tr>                              
+                                        <td>K</td>
+                                        <td>€</td>
+                                        <td>Kosten</td>
+                                    </tr>                                    
                                 </tbody>
                             </Table>
                         </div>
@@ -133,9 +179,6 @@ function RecursivepartioningAlgorithmus() {
                         </div>
 
                     </div>
-                </div>
-                <div className="col-md-6 ">
-                    
                     <div className="mt-3">
                         <div>
                             <h3 className="mb-0">API output</h3>
@@ -158,4 +201,4 @@ function RecursivepartioningAlgorithmus() {
 
 }
 
-export default withRouter(RecursivepartioningAlgorithmus);
+export default withRouter(Template);

@@ -62,6 +62,15 @@ export function NavbarApp (){
                     </NavDropdown>
                 </Nav>
 
+                <Nav>
+                    <NavDropdown title="Diskrete">
+                        <NavDropdown.Item onClick={() => pushHistory("/dual_adjustment_verfahren")}>Dual-Adjustment Verfahren</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/dual_ascent_verfahren")}>Dual-Ascent Verfahren</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/greedy_heuristik")}>Greedy Heuristik</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/interchange_heuristik")}>Interchange Heuristik</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/konstruktionsheuristik")}>Konstruktionsheuristik</NavDropdown.Item>
+                    </NavDropdown>
+                </Nav>
 
 
                 <Nav>
