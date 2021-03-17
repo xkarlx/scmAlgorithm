@@ -6,6 +6,10 @@ import { useForm } from "react-hook-form"
 import stringifyObject from "stringify-object";
 import { axiosInstance } from "../../actions/ajax";
 import ReactJson from 'react-json-view'
+
+import ImageGebietsplanung1 from "../../assets/image/Gebietsplanung1.PNG"
+import ImageGebietsplanung2 from "../../assets/image/Gebietsplanung2.PNG"
+import ImageGebietsplanung3 from "../../assets/image/Gebietsplanung3.PNG"
 /**
  * /home
  */
@@ -68,6 +72,34 @@ function RecursivepartioningAlgorithmus() {
             </div>
             <div className="row ">
 
+            <div className="col-md-6 overflow-auto vh-100">
+                    <div className="mt-3">
+                        <div>
+                            <h3 className="mb-0">Lecture - Reock Test</h3>
+                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
+                        </div>
+                        <div className="d-flex flex-column  justify-content-center align-items-center mb-5">
+                            <img
+                                src={ImageGebietsplanung1}
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                            <img
+                                src={ImageGebietsplanung2}
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                             <img
+                                src={ImageGebietsplanung3}
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                        </div>
+                    </div>
+                </div>
                 <div className="col-md-6">
                 <div className="mt-3">
                         <div>
@@ -158,8 +190,7 @@ function RecursivepartioningAlgorithmus() {
                         </div>
 
                     </div>
-                </div>
-                <div className="col-md-6 ">
+                
                     
                     <div className="mt-3">
                         <div>
