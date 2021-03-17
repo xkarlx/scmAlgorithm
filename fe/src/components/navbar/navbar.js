@@ -54,11 +54,11 @@ export function NavbarApp (){
                 </Nav>
                 <Nav>
                     <NavDropdown title="Netzwerke">
-                        <NavDropdown.Item onClick={() => pushHistory("/distanzmessung_netzwerk")}>Distanzmessung Netzwerk</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => pushHistory("/analytische_betrachtung_distanzfunktion")}>Analytische Betrachtung Distanzfunktion</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/distanzmessung_netzwerk")}>Distanzmessung Netzwerk</NavDropdown.Item>                        
                         <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_knotenbeschraenkt")}>1-Medianprobleme Knotenbeschränkt</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_absolut")}>1 Medianprobleme Absolut</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1medianprobleme_baeume")}>1-Medianprobleme Bäume</NavDropdown.Item>
                         <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_knotenbeschraenkt")}>1-Centerprobleme Knotenbeschränkt</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => pushHistory("/1centerprobleme_baeume")}>1-Centerprobleme Bäume</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
 

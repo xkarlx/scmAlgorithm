@@ -20,8 +20,8 @@ import CenterproblemeEbeneGewichtet from "../views/standortplanungEbene/1centerp
 import CenterproblemeL2 from "../views/standortplanungEbene/1centerproblemeEbeneL2";
 
 import MedianproblemeKnotenbeschraenkt from "../views/standortplanungNetzwerke/1MedianproblemeKnotenbeschraenkt";
-import MedianproblemeAbsolut from "../views/standortplanungNetzwerke/1MedianproblemeAbsolut";
-import AnalytischeBetrachtungDistanzfunktion from "../views/standortplanungNetzwerke/analytischeBetrachtungDistanzfunktion";
+import MedianproblemeBaeume from "../views/standortplanungNetzwerke/1MedianproblemeBaeume";
+import CenterproblemeBaeume from "../views/standortplanungNetzwerke/1CenterproblemeBaeume";
 import CenterproblemeKnotenbeschraenkt from "../views/standortplanungNetzwerke/1CenterproblemeKnoteneschraenkt";
 import DistanzmessungNetzwerk from "../views/standortplanungNetzwerke/distanzmessungNetzwerke";
 
@@ -68,11 +68,11 @@ function RoutesApp() {
                 <Route path="/1centerprobleme_ebene_gewichtet" exact component={CenterproblemeEbeneGewichtet} />
                 <Route path="/1centerprobleme_ebene_l2" exact component={CenterproblemeL2} />
 
-                <Route path="/distanzmessung_netzwerk" exact component={DistanzmessungNetzwerk} />
-                <Route path="/analytische_betrachtung_distanzfunktion" exact component={AnalytischeBetrachtungDistanzfunktion} />
+                <Route path="/distanzmessung_netzwerk" exact component={DistanzmessungNetzwerk} />                
                 <Route path="/1medianprobleme_knotenbeschraenkt" exact component={MedianproblemeKnotenbeschraenkt} />  
-                <Route path="/1medianprobleme_absolut" exact component={MedianproblemeAbsolut} />
+                <Route path="/1medianprobleme_baeume" exact component={MedianproblemeBaeume} />
                 <Route path="/1centerprobleme_knotenbeschraenkt" exact component={CenterproblemeKnotenbeschraenkt} />
+                <Route path="/1centerprobleme_baeume" exact component={CenterproblemeBaeume} />
 
                 <Route path="/dual_adjustment_verfahren" exact component={DualAdjustmentVerfahren} />
                 <Route path="/dual_ascent_verfahren" exact component={DualAscentVerfahren} />

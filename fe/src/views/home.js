@@ -102,21 +102,21 @@ function Home() {
                                 <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/distanzmessung_netzwerk")}}>
                                    <h6 className="mr-3"> Distanzmessung Netzwerk </h6>
                                    <small></small>
-                                </ListGroup.Item>                    
-                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/analytische_betrachtung_distanzfunktion")}}>
-                                   <h6 className="mr-3"> Analytische Betrachtung Distanzfunktion </h6>
-                                   <small></small>
-                                </ListGroup.Item>
+                                </ListGroup.Item>   
                                 <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1medianprobleme_knotenbeschraenkt")}}>
                                    <h6 className="mr-3"> 1-Medianprobleme Knotenbeschränkt </h6>
                                    <small></small>
                                 </ListGroup.Item>
-                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1medianprobleme_absolut")}}>
-                                   <h6 className="mr-3"> 1-Medianprobleme Absolut </h6>
+                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1medianprobleme_baeume")}}>
+                                   <h6 className="mr-3"> 1-Medianprobleme Bäume </h6>
                                    <small></small>
                                 </ListGroup.Item>
                                 <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1centerprobleme_knotenbeschraenkt")}}>
                                    <h6 className="mr-3"> 1-Centerprobleme Knotenbeschränkt </h6>
+                                   <small></small>
+                                </ListGroup.Item>
+                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1centerprobleme_baeume")}}>
+                                   <h6 className="mr-3"> 1-Centerprobleme Bäume </h6>
                                    <small></small>
                                 </ListGroup.Item>                            
                             </ListGroup>

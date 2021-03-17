@@ -6,14 +6,23 @@ import { useForm } from "react-hook-form"
 import stringifyObject from "stringify-object";
 import { axiosInstance } from "../../actions/ajax";
 import ReactJson from 'react-json-view'
+
+import ImageDistanzmessungNetzwerk1 from "../../assets/image/DistanzmessungNetzwerk1.PNG";
+import ImageDistanzmessungNetzwerk2 from "../../assets/image/DistanzmessungNetzwerk2.PNG";
+import ImageDistanzmessungNetzwerk3 from "../../assets/image/DistanzmessungNetzwerk3.PNG";
+import ImageDistanzmessungBeispiel from "../../assets/image/DistanzmessungBeispiel.PNG";
+
+
 /**
  * /home
  */
-function Template() {
+function DistanzmessungNetzwerke() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
-    const apiExample = "Test";
+    const apiExample = '{"0":"Fr","1":"Mu","d_01":200,"distanzen":[   \
+        {"name":"Mz","0":350 ,"1":430}, {"name":"St","0":370 ,"1":120},   {"name":"Ka","0":160 ,"1":300}                \
+    ]}';
     const { register, handleSubmit, watch, errors } = useForm();
 
     function copyToClipboard() {
@@ -33,11 +42,10 @@ function Template() {
         
         var json_data=JSON.parse(data["data"])
         axiosInstance({
-            method: 'get',
-            url: 'test',
+            method: 'post',
+            url: '/standortplanung_netzwerken/distanzmeesung_netzwerke',
             data: {
-                type: "hot",
-                limit: 10
+                ...json_data
             }
         })
             .then(res => {
@@ -56,8 +64,8 @@ function Template() {
         <div className="container-fluid ">
             <div className="row ">
                 <div className="col-12 mt-3">
-                    <h2 className="mb-0">Template</h2>
-                    <p>Test</p>
+                    <h2 className="mb-0">Distanzmessung Netzwerke</h2>
+                    <p>Bestimmung Bottleneckpunkte, Analytische Betrachtung der Distanzfunktion</p>
                 </div>
             </div>
             <div className="row ">
@@ -65,18 +73,24 @@ function Template() {
                 <div className="col-md-6 overflow-auto vh-100">
                     <div className="mt-3">
                         <div>
-                            <h3 className="mb-0">Formula</h3>
+                            <h3 className="mb-0">Lecture</h3>
                             <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
                         </div>
                         <div className="d-flex flex-column  justify-content-center align-items-center">
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageDistanzmessungNetzwerk1}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
                             />
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageDistanzmessungNetzwerk2}
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                            <img
+                                src={ImageDistanzmessungNetzwerk3}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
@@ -90,39 +104,13 @@ function Template() {
                         </div>
                         <div className="d-flex flex-column  justify-content-center align-items-center">
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageDistanzmessungBeispiel}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
+                            />                         
                         </div>
-                    </div>
-                    <div className="mt-3">
-                        <div>
-                            <h3 className="mb-0">Excercise</h3>
-                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
-                        </div>
-                        <div className="d-flex flex-column  justify-content-center align-items-center">
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                        </div>
-                    </div>
+                    </div>                   
                 </div>
                 <div className="col-md-6 ">
                     <div className="mt-3">
@@ -141,9 +129,24 @@ function Template() {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>K</td>
-                                        <td>€</td>
-                                        <td>Kosten</td>
+                                        <td>0</td>
+                                        <td>str</td>
+                                        <td>Name linker Startpunkt</td>
+                                    </tr>   
+                                    <tr>
+                                        <td>1</td>
+                                        <td>str</td>
+                                        <td>Name rechter Zielpunkt</td>
+                                    </tr>   
+                                    <tr>
+                                        <td>d_01</td>
+                                        <td>float</td>
+                                        <td>Distanz zwischen 0 und 1 (muss unten nicht angegeben werden)</td>
+                                    </tr>    
+                                    <tr>
+                                        <td>distanzen</td>
+                                        <td>{}</td>
+                                        <td>"name":,"0":Distanz zum Start ,"1":Distanz zum Ziel</td>
                                     </tr>                                    
                                 </tbody>
                             </Table>
@@ -152,7 +155,7 @@ function Template() {
                             <Card>
                                 <Card.Body className=" mb-0 mt-0 pt-2 pb-2 align-items-center">
                                     <div>
-                                        <p className="mb-0 pb-0 text-primary"><small>test</small></p>
+                                        <p className="mb-0 pb-0 text-primary"><small>Distanzberechnung für 1 Verbindung</small></p>
                                     </div>
                                     <div className="d-flex">
                                         <p ref={refApiTextExample} className="mb-0 pb-0 mr-auto">{apiExample}</p>
@@ -202,4 +205,4 @@ function Template() {
 
 }
 
-export default withRouter(Template);
+export default withRouter(DistanzmessungNetzwerke);

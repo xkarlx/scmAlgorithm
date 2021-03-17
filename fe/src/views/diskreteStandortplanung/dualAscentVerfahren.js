@@ -4,7 +4,7 @@ import { Card, ListGroup, Button, Table } from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import stringifyObject from "stringify-object";
-import { axiosInstance } from "../actions/ajax";
+import { axiosInstance } from "../../actions/ajax";
 import ReactJson from 'react-json-view'
 /**
  * /home

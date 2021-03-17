@@ -6,14 +6,22 @@ import { useForm } from "react-hook-form"
 import stringifyObject from "stringify-object";
 import { axiosInstance } from "../../actions/ajax";
 import ReactJson from 'react-json-view'
+
+import ImageMedianproblemeNetzwerke1 from "../../assets/image/MedianproblemeNetzwerke1.PNG";
+import ImageMedianproblemeNetzwerke2 from "../../assets/image/MedianproblemeNetzwerke2.PNG";
+import ImageMedianproblemeNetzwerke3 from "../../assets/image/MedianproblemeNetzwerke3.PNG";
+import ImageMedianproblemeNetzwerke4 from "../../assets/image/MedianproblemeNetzwerke4.PNG";
+import ImageMedianproblemeNetzwerke5 from "../../assets/image/MedianproblemeNetzwerke5.PNG";
+
+
 /**
  * /home
  */
-function Template() {
+function MedianproblemeKnotenbeschraenkte() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
-    const apiExample = "Test";
+    const apiExample = '{"kosten":[3,1,6,5,4],"distanzmatrix":[[0,7,8,16,13],[7,0,4,12,9],[8,4,0,8,5],[16,12,8,0,5],[13,9,5,5,0]]}';
     const { register, handleSubmit, watch, errors } = useForm();
 
     function copyToClipboard() {
@@ -33,11 +41,10 @@ function Template() {
         
         var json_data=JSON.parse(data["data"])
         axiosInstance({
-            method: 'get',
-            url: 'test',
+            method: 'post',
+            url: 'standortplanung_netzwerken/medianprobleme_kontenbeschraenkt',
             data: {
-                type: "hot",
-                limit: 10
+               ...json_data
             }
         })
             .then(res => {
@@ -56,8 +63,8 @@ function Template() {
         <div className="container-fluid ">
             <div className="row ">
                 <div className="col-12 mt-3">
-                    <h2 className="mb-0">Template</h2>
-                    <p>Test</p>
+                    <h2 className="mb-0">1 Medianprobleme</h2>
+                    <p>Absolutes & knotenbeschränktes Problem</p>
                 </div>
             </div>
             <div className="row ">
@@ -65,64 +72,50 @@ function Template() {
                 <div className="col-md-6 overflow-auto vh-100">
                     <div className="mt-3">
                         <div>
-                            <h3 className="mb-0">Formula</h3>
+                            <h3 className="mb-0">Knotenbeschränktes 1-Medianproblem</h3>
                             <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
                         </div>
                         <div className="d-flex flex-column  justify-content-center align-items-center">
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageMedianproblemeNetzwerke1}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
                             />
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageMedianproblemeNetzwerke3}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
                             />
                         </div>
                     </div>
-                    <div className="mt-3">
+                    <div className="mt-3 mb-3">
                         <div>
-                            <h3 className="mb-0">Example</h3>
+                            <h3 className="mb-0">Absolutes 1-Medianproblem</h3>
                             <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
                         </div>
                         <div className="d-flex flex-column  justify-content-center align-items-center">
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageMedianproblemeNetzwerke2}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
                             />
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageMedianproblemeNetzwerke4}
+                                alt="new"
+                                className="w-100"
+                                style={{ maxWidth: "600px" }}
+                            />
+                             <img
+                                src={ImageMedianproblemeNetzwerke5}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
                             />
                         </div>
-                    </div>
-                    <div className="mt-3">
-                        <div>
-                            <h3 className="mb-0">Excercise</h3>
-                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
-                        </div>
-                        <div className="d-flex flex-column  justify-content-center align-items-center">
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
                 <div className="col-md-6 ">
                     <div className="mt-3">
@@ -141,9 +134,14 @@ function Template() {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>K</td>
-                                        <td>€</td>
-                                        <td>Kosten</td>
+                                        <td>kosten</td>
+                                        <td></td>
+                                        <td>1D-List von den Kosten</td>
+                                    </tr>  
+                                    <tr>
+                                        <td>distanzmatrix</td>
+                                        <td></td>
+                                        <td>2D Matrix</td>
                                     </tr>                                    
                                 </tbody>
                             </Table>
@@ -152,7 +150,7 @@ function Template() {
                             <Card>
                                 <Card.Body className=" mb-0 mt-0 pt-2 pb-2 align-items-center">
                                     <div>
-                                        <p className="mb-0 pb-0 text-primary"><small>test</small></p>
+                                        <p className="mb-0 pb-0 text-primary"><small>Medianprobleme knotenbeschränkt</small></p>
                                     </div>
                                     <div className="d-flex">
                                         <p ref={refApiTextExample} className="mb-0 pb-0 mr-auto">{apiExample}</p>
@@ -180,7 +178,7 @@ function Template() {
                         </div>
 
                     </div>
-                    <div className="mt-3">
+                    <div className="mt-3 mb-5">
                         <div>
                             <h3 className="mb-0">API output</h3>
                             <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
@@ -202,4 +200,4 @@ function Template() {
 
 }
 
-export default withRouter(Template);
+export default withRouter(MedianproblemeKnotenbeschraenkte);

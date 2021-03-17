@@ -16,7 +16,7 @@ const volkswirtschaftlicheStandortmodelleRoutes = require('./routes/volkswirtsch
 const standortplanungEbeneRoutes = require('./routes/standortplanungEbeneRoutes');
 const standortplanungNetzwerkenRoutes = require('./routes/standortplanungNetzwerkenRoutes');
 const gebietsplanungRoutes = require('./routes/gebietsplanungRoutes');
-const diskreteStandortplanungRoutes = Require("./routes/diskreteStandortplanungRoutes");
+const diskreteStandortplanungRoutes = require("./routes/diskreteStandortplanungRoutes");
 
 const bodyParser = require('body-parser');
 //const app = express();

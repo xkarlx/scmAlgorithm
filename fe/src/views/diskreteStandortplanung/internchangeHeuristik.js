@@ -4,12 +4,12 @@ import { Card, ListGroup, Button, Table } from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import stringifyObject from "stringify-object";
-import { axiosInstance } from "../actions/ajax";
+import { axiosInstance } from "../../actions/ajax";
 import ReactJson from 'react-json-view'
 /**
  * /home
  */
-function internchangeHeuristik() {
+function InternchangeHeuristik() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
@@ -201,4 +201,4 @@ function internchangeHeuristik() {
 
 }
 
-export default withRouter(internchangeHeuristik);
+export default withRouter(InternchangeHeuristik);

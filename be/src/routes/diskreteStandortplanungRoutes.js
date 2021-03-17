@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const diskreteStandortsplanungController = require('../controllers/diskreteStandortsplanungController');
+const diskreteStandortsplanungController = require('../controllers/diskreteStandortplanungController');
 
 router.post('/dual_adjustment_verfahren',diskreteStandortsplanungController.getDualAdjustmentVerfahren);
 router.post('/dual_ascent_verfahren',diskreteStandortsplanungController.getDualAscentVerfahren);
