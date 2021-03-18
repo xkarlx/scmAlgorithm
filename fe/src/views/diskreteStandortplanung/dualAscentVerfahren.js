@@ -17,7 +17,7 @@ function DualAscentVerfahren() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
-    const apiExample = '{"list":[[0,4,6,12,3],[2,6,3,4,0],[4,9,10,12,8],[6,0,12,3,7],[9,12,0,3,8],[12,8,4,0,6]],"kosten":[21,6,9,9,12]}';;
+    const apiExample = '{"list":[[0,4,6,12,3],[2,6,3,4,0],[4,9,10,12,8],[6,0,12,3,7],[9,12,0,3,8],[12,8,4,0,6]],"kosten":[12,6,9,9,12]}';
     const { register, handleSubmit, watch, errors } = useForm();
 
     function copyToClipboard() {
