@@ -370,7 +370,7 @@ exports.get1CenterproblemeGewichtet = async (req, res, next) => {
     var pointList = [];
     if ("list" in inputJSON && "l_1" in inputJSON) {
         var transformPoints = inputJSON["l_1"];
-
+        console.log(transformPoints);
         if (inputJSON["list"].length > 0) {
             pointList = inputJSON["list"]
 
@@ -400,8 +400,8 @@ exports.get1CenterproblemeGewichtet = async (req, res, next) => {
                     pointList.forEach(element2 => {
                         if (i2 != i1) {
                             d_list.push({
-                                "info": "index starts at 1", "name": "d_" + (i1 + 1) + (i2 + 1), "d_x": element.w * element2.w / (element2.w + element.w) * (element.x - element2.x), "i": i1 + 1, "j": i2 + 1,
-                                "d_y": element.w * element2.w / (element2.w + element.w) * (element.y - element2.y)
+                                "info": "index starts at 1", "name": "d_" + (i1 + 1) + (i2 + 1), "d_x": element.w * element2.w / (element2.w + element.w) * (element2.xInf - element.xInf), "i": i1 + 1, "j": i2 + 1,
+                                "d_y": element.w * element2.w / (element2.w + element.w) * (element2.yInf - element.yInf)
                             })
                         }
                         i2 += 1
@@ -419,7 +419,7 @@ exports.get1CenterproblemeGewichtet = async (req, res, next) => {
 
                 var l1_solution = transformLInfToL1({ "xInf": x_x, "yInf": x_y })
 
-                res.status(200).send({ "z*_x": z_x, "z*_y": z_y, "z*": Math.max(z_x, z_y), "x*_x": x_x, "x*_y": x_y, "l1_solution": l1_solution, "d_list": d_list });
+                res.status(200).send({ "z*_x": z_x, "z*_y": z_y, "z*": Math.max(z_x, z_y), "x*_x": x_x, "x*_y": x_y, "l1_solution": l1_solution, "d_list": d_list ,"pointList":pointList});
 
 
             } else {
@@ -478,7 +478,7 @@ exports.get1CenterproblemeL2 = async (req, res, next) => {
 
             possebilityList.forEach(element => {
                 if(element.list.length==2){
-                    element.m = {"x":(element.list[0].x+element.list[0].x)/2,"y":(element.list[0].y+element.list[1].y)/2}
+                    element.m = {"x":(element.list[0].x+element.list[1].x)/2,"y":(element.list[0].y+element.list[1].y)/2}
                     element.m.r= getL2Distance(element.m,element.list[0])          
                     element.m.ueberdeckung=getUeberdeckung(pointList,{"x":element.m.x,"y":element.m.y},element.m.r)
                 }else if(element.list.length==3){
@@ -487,23 +487,41 @@ exports.get1CenterproblemeL2 = async (req, res, next) => {
                     var b_01 = (Math.pow(element.list[1].x,2)+Math.pow(element.list[1].y,2)-Math.pow(element.list[0].x,2)-Math.pow(element.list[0].y,2) ) / (2 * (element.list[1].y-element.list[0].y))
                     var b_02 = (Math.pow(element.list[2].x,2)+Math.pow(element.list[2].y,2)-Math.pow(element.list[0].x,2)-Math.pow(element.list[0].y,2) ) / (2 * (element.list[2].y-element.list[0].y))
                     
-                    element.m = {"x": (b_02-b_01)/(m_01-m_02),"y": (m_01*b_02-b_01*m_02)/(m_01-m_02) }
-                    element.m.r = getL2Distance(element.m,element.list[0])
-                  
-                    element.m.ueberdeckung = getUeberdeckung(pointList,element.m,element.m.r)
+                    var erg1 = {"x": (b_02-b_01)/(m_01-m_02),"y": (m_01*b_02-b_01*m_02)/(m_01-m_02)}
+                    erg1 ={...erg1, "r":getL2Distance(erg1,element.list[0])}
+                    element.m = erg1
+                    element.m.ueberdeckung=getUeberdeckung(pointList,element.m,element.m.r)
+                    
+                    possebilityList.forEach(element2 => {
+                        if(element2.list.length==2){
+                           
+                            if(checkIfListEqual(element2.m.ueberdeckung,element.m.ueberdeckung)){
+                               
+                                if(element.m.r>element2.m.r){
+                                    
+                                    element.m={...element2.m,"equalTo":element2.index}
+                                    
+                                }
+                            }
+                        }
+                    })
+                   
                 }
             }
             )
+
+            
             
             possebilityList.forEach(element => {
                 element.m.x = Math.round(element.m.x*100)/100
                 element.m.y = Math.round(element.m.y*100)/100
                 element.m.r = Math.round(element.m.r*100)/100
             })
-
+            
             var filteredList = possebilityList.filter(element => !element.m.ueberdeckung.some(element2 => element2==false)  )
+
             if(filteredList.length>0){
-                console.log(filteredList)
+                
                 var result = filteredList.find(element2 => element2.m.r == Math.min(...filteredList.map(element => element.m.r)))
                 res.status(200).json({"x":result.m.x,"y":result.m.y,"r":result.m.r,"all possebilities":possebilityList});
             }else{
@@ -520,5 +538,15 @@ exports.get1CenterproblemeL2 = async (req, res, next) => {
 
 function getUeberdeckung(pointList,m,r){
     
-    return pointList.map(element => {return getL2Distance(element,m)<=r})
+    return pointList.map(element => {return getL2Distance(element,m)-0.0001<=r})
+}
+
+function checkIfListEqual(list1,list2){
+    var listEqual=true
+    list1.forEach((element,i)=>{
+        if(element!=list2[i]){
+            listEqual=false
+        }
+    })
+    return listEqual
 }

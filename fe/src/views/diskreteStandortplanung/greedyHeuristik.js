@@ -6,6 +6,10 @@ import { useForm } from "react-hook-form"
 import stringifyObject from "stringify-object";
 import { axiosInstance } from "../../actions/ajax";
 import ReactJson from 'react-json-view'
+
+import ImageGreedyHeuristik1 from "../../assets/image/GreedyHeuristik1.PNG"
+import ImageGreedyHeuristik2 from "../../assets/image/GreedyHeuristik2.PNG"
+
 /**
  * /home
  */
@@ -13,7 +17,7 @@ function GreedyHeuristik() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
-    const apiExample = "Test";
+    const apiExample = '{"list":[[8,10,19,13],[7,14,24,21],[18,12,5,12],[16,14,7,13],[15,15,8,18]],"kosten":[21,17,20,22]}';
     const { register, handleSubmit, watch, errors } = useForm();
 
     function copyToClipboard() {
@@ -55,8 +59,8 @@ function GreedyHeuristik() {
         <div className="container-fluid ">
             <div className="row ">
                 <div className="col-12 mt-3">
-                    <h2 className="mb-0">Template</h2>
-                    <p>Test</p>
+                    <h2 className="mb-0">Greedy-Heuristik</h2>
+                    <p>Konstruktionsheuristiken</p>
                 </div>
             </div>
             <div className="row ">
@@ -69,59 +73,20 @@ function GreedyHeuristik() {
                         </div>
                         <div className="d-flex flex-column  justify-content-center align-items-center">
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageGreedyHeuristik1}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
                             />
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageGreedyHeuristik2}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
                             />
                         </div>
                     </div>
-                    <div className="mt-3">
-                        <div>
-                            <h3 className="mb-0">Example</h3>
-                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
-                        </div>
-                        <div className="d-flex flex-column  justify-content-center align-items-center">
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                        </div>
-                    </div>
-                    <div className="mt-3">
-                        <div>
-                            <h3 className="mb-0">Excercise</h3>
-                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
-                        </div>
-                        <div className="d-flex flex-column  justify-content-center align-items-center">
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                        </div>
-                    </div>
+                   
                 </div>
                 <div className="col-md-6 ">
                     <div className="mt-3">
@@ -140,9 +105,14 @@ function GreedyHeuristik() {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>K</td>
-                                        <td>€</td>
-                                        <td>Kosten</td>
+                                        <td>kosten</td>
+                                        <td></td>
+                                        <td>1D-Array</td>
+                                    </tr> 
+                                    <tr>
+                                        <td>list</td>
+                                        <td></td>
+                                        <td>2D-Array</td>
                                     </tr>                                    
                                 </tbody>
                             </Table>

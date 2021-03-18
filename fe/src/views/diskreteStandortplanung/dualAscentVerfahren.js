@@ -6,6 +6,10 @@ import { useForm } from "react-hook-form"
 import stringifyObject from "stringify-object";
 import { axiosInstance } from "../../actions/ajax";
 import ReactJson from 'react-json-view'
+
+import ImageDualAscentVerfahren1 from "../../assets/image/DualAscentVerfahren1.PNG"
+import ImageDualAscentVerfahren2 from "../../assets/image/DualAscentVerfahren2.PNG"
+import ImageDualAscentVerfahren3 from "../../assets/image/DualAscentVerfahren3.PNG"
 /**
  * /home
  */
@@ -13,7 +17,7 @@ function DualAscentVerfahren() {
 
     const refApiTextExample = useRef(null)
     const [state, setState] = useState("");
-    const apiExample = "Test";
+    const apiExample = '{"list":[[0,4,6,12,3],[2,6,3,4,0],[4,9,10,12,8],[6,0,12,3,7],[9,12,0,3,8],[12,8,4,0,6]],"kosten":[21,6,9,9,12]}';;
     const { register, handleSubmit, watch, errors } = useForm();
 
     function copyToClipboard() {
@@ -64,64 +68,39 @@ function DualAscentVerfahren() {
                 <div className="col-md-6 overflow-auto vh-100">
                     <div className="mt-3">
                         <div>
-                            <h3 className="mb-0">Formula</h3>
+                            <h3 className="mb-0">Lecture</h3>
                             <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
                         </div>
                         <div className="d-flex flex-column  justify-content-center align-items-center">
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageDualAscentVerfahren1}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
+                            />                        
                         </div>
                     </div>
-                    <div className="mt-3">
+                    <div className="mt-3 mb-3">
                         <div>
                             <h3 className="mb-0">Example</h3>
                             <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
                         </div>
                         <div className="d-flex flex-column  justify-content-center align-items-center">
                             <img
-                                src="https://via.placeholder.com/150"
+                                src={ImageDualAscentVerfahren3}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
+                            />      
+                             <img
+                                src={ImageDualAscentVerfahren2}
                                 alt="new"
                                 className="w-100"
                                 style={{ maxWidth: "600px" }}
-                            />
+                            />      
                         </div>
                     </div>
-                    <div className="mt-3">
-                        <div>
-                            <h3 className="mb-0">Excercise</h3>
-                            <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
-                        </div>
-                        <div className="d-flex flex-column  justify-content-center align-items-center">
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                            <img
-                                src="https://via.placeholder.com/150"
-                                alt="new"
-                                className="w-100"
-                                style={{ maxWidth: "600px" }}
-                            />
-                        </div>
-                    </div>
+                    
                 </div>
                 <div className="col-md-6 ">
                     <div className="mt-3">
@@ -130,7 +109,7 @@ function DualAscentVerfahren() {
                             <hr className="bg-dark mt-0 pt-0" style={{ height: "2px" }}></hr>
                         </div>
                         <div>
-                            <Table striped bordered hover size="sm">
+                        <Table striped bordered hover size="sm">
                                 <thead>
                                     <tr>                                        
                                         <th>Abbreviation</th>
@@ -140,9 +119,14 @@ function DualAscentVerfahren() {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>K</td>
-                                        <td>€</td>
-                                        <td>Kosten</td>
+                                        <td>kosten</td>
+                                        <td></td>
+                                        <td>1D-Array</td>
+                                    </tr> 
+                                    <tr>
+                                        <td>list</td>
+                                        <td></td>
+                                        <td>2D-Array</td>
                                     </tr>                                    
                                 </tbody>
                             </Table>
