@@ -146,7 +146,7 @@ function checkResults(result, itertionNumber, sList, vList) {
             }
         })
     }
-    console.log(notEqual,result,sList, vList)
+
     return notEqual
 }
 
