@@ -78,6 +78,11 @@ exports.get1MedianproblemeL1 = async (req, res, next) => {
                     result.f_x += element.w * (Math.abs(element.x - result.x) + Math.abs(element.y - result.y))
                 })
 
+                result["l1-Distance"] =0
+                pointList.forEach(element => {
+                    result["l1-Distance"] +=  (Math.abs(element.x - result.x) + Math.abs(element.y - result.y))
+                })
+
                 res.status(200).json(result);
 
             } else {
@@ -250,8 +255,40 @@ function getCenterOfGravity(pointList) {
     result.f_y = Math.round(result.f_y * 100) / 100
     result.x = Math.round(result.x * 100) / 100
     result.y = Math.round(result.y * 100) / 100
+
+    result.distance_x_l2 = 0
+    result.distance_y_l2  = 0
+    result.distance_xy_l2  = 0
+
+    result.distance_x_l2_ungewichtet = 0
+    result.distance_y_l2_ungewichtet  = 0
+    result.distance_xy_l2_ungewichtet  = 0
+
+    pointList.forEach(element => {
+        result.distance_x_l2_ungewichtet += getL2Distance({"x":element.x,"y":0},{"x":result.x,"y":0});
+        result.distance_y_l2_ungewichtet +=getL2Distance({"x":0,"y":element.y},{"x":0,"y":result.y});
+        result.distance_xy_l2_ungewichtet += getL2Distance(element,result);
+    })
+
+    result.distance_x_l2_ungewichtet = Math.round(result.distance_x_l2_ungewichtet * 100) / 100    
+    result.distance_y_l2_ungewichtet = Math.round(result.distance_y_l2_ungewichtet * 100) / 100
+    result.distance_xy_l2_ungewichtet = Math.round(result.distance_xy_l2_ungewichtet * 100) / 100
+
+    pointList.forEach(element => {
+        result.distance_x_l2 += element.w * getL2Distance({"x":element.x,"y":0},{"x":result.x,"y":0});
+        result.distance_y_l2 += element.w *getL2Distance({"x":0,"y":element.y},{"x":0,"y":result.y});
+        result.distance_xy_l2 += element.w *getL2Distance(element,result);
+    })
+
+    result.distance_x_l2 = Math.round(result.distance_x_l2 * 100) / 100    
+    result.distance_y_l2 = Math.round(result.distance_y_l2 * 100) / 100
+    result.distance_xy_l2 = Math.round(result.distance_xy_l2 * 100) / 100
+
+
     return result
 }
+
+
 
 function getWeiszfeldIteration(pointList, point) {
     var result_x = 0
@@ -321,10 +358,21 @@ exports.get1CenterproblemeL1 = async (req, res, next) => {
                     "ul": { "xInf": Math.min(...pointList.map(element => element.xInf)), "yInf": Math.min(...pointList.map(element => element.yInf)) },
                     "or": { "xInf": Math.max(...pointList.map(element => element.xInf)), "yInf": Math.max(...pointList.map(element => element.yInf)) }
                 }
+                var rectangleQ1 ={}
+                var rectangleQ2 ={} 
+                if(Math.abs(rectangle["ul"]["xInf"]-rectangle["or"]["xInf"]) >  Math.abs(rectangle["ul"]["yInf"]-rectangle["or"]["yInf"])){
+                    //dehne in y Richtung
+                     rectangleQ1 = { "ul": rectangle["ul"], "or": { "xInf": rectangle["or"]["xInf"], "yInf": rectangle["ul"]["yInf"] + rectangle["or"]["xInf"] - rectangle["ul"]["xInf"] } }
+                     rectangleQ2 = { "ul": { "xInf": rectangle["ul"]["xInf"], "yInf": rectangle["or"]["yInf"] - rectangle["or"]["xInf"] + rectangle["ul"]["xInf"] }, "or": rectangle["or"] }
+               
+                }else{
+                    var scaleLength = Math.abs(rectangle["ul"]["yInf"]-rectangle["or"]["yInf"])-Math.abs(rectangle["ul"]["xInf"]-rectangle["or"]["xInf"])
+                    rectangleQ1 = { "ul": { "xInf": rectangle["ul"]["xInf"] - scaleLength  , "yInf":rectangle["ul"]["yInf"] }, "or": rectangle["or"]  }
+                    rectangleQ2 = { "ul":  rectangle["ul"], "or": {"xInf":rectangle["or"]["xInf"]+scaleLength , "yInf":rectangle["or"]["yInf"]} }
+               
+                }
 
-                var rectangleQ1 = { "ul": rectangle["ul"], "or": { "xInf": rectangle["or"]["xInf"], "yInf": rectangle["ul"]["yInf"] + rectangle["or"]["xInf"] - rectangle["ul"]["xInf"] } }
-                var rectangleQ2 = { "ul": { "xInf": rectangle["ul"]["xInf"], "yInf": rectangle["or"]["yInf"] - rectangle["or"]["xInf"] + rectangle["ul"]["xInf"] }, "or": rectangle["or"] }
-                var m1 = {}
+                 var m1 = {}
                 m1 = getMidllePointRect(rectangleQ1["ul"], rectangleQ1["or"])
                 var m2 = getMidllePointRect(rectangleQ2["ul"], rectangleQ2["or"])
                 m1 = { ...m1, ...transformLInfToL1(m1) }
@@ -414,8 +462,9 @@ exports.get1CenterproblemeGewichtet = async (req, res, next) => {
                 var result_y = d_list.find(element2 => element2.d_y == Math.max(...d_list.map(element => element.d_y)))
                 var z_x = result_x.d_x
                 var z_y = result_y.d_y
-                var x_x = (pointList[result_x.i - 1].w * pointList[result_x.i - 1].x + pointList[result_x.j - 1].w * pointList[result_x.j - 1].x) / (pointList[result_x.i - 1].w + pointList[result_x.j - 1].w)
-                var x_y = (pointList[result_y.i - 1].w * pointList[result_y.i - 1].y + pointList[result_y.j - 1].w * pointList[result_y.j - 1].y) / (pointList[result_y.i - 1].w + pointList[result_y.j - 1].w)
+               
+                var x_x = (pointList[result_x.i - 1].w * pointList[result_x.i - 1].xInf + pointList[result_x.j - 1].w * pointList[result_x.j - 1].xInf) / (pointList[result_x.i - 1].w + pointList[result_x.j - 1].w)
+                var x_y = (pointList[result_y.i - 1].w * pointList[result_y.i - 1].yInf + pointList[result_y.j - 1].w * pointList[result_y.j - 1].yInf) / (pointList[result_y.i - 1].w + pointList[result_y.j - 1].w)
 
                 var l1_solution = transformLInfToL1({ "xInf": x_x, "yInf": x_y })
 

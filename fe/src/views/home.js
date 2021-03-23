@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
 
 import { withRouter,useHistory } from "react-router-dom";
+import Footer from '../components/footer';
 
 /**
  * /home
@@ -58,11 +59,7 @@ function Home() {
                                 <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/distanzmessung")}}>
                                    <h6 className="mr-3"> Distanzmessung </h6>
                                    <small></small>
-                                </ListGroup.Item>
-                                <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1medianprobleme")}}>
-                                   <h6 className="mr-3"> 1-Medianprobleme </h6>
-                                   <small></small>
-                                </ListGroup.Item>
+                                </ListGroup.Item>                               
                                 <ListGroup.Item className="d-flex" onClick={()=>{pushHistory("/1medianprobleme_ebene_l1")}}>
                                    <h6 className="mr-3"> 1-Medianprobleme mit l_1 Metrik </h6>
                                    <small></small>
@@ -181,6 +178,10 @@ function Home() {
                    
                 </div>
                 
+            </div>
+            <div className="col-12">
+                <Footer></Footer>
+
             </div>
         </div>
        

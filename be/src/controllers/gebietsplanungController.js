@@ -220,33 +220,37 @@ function getSplit(pointList) {
     var pointListRightX = []
     var wLeftX = 0
     var lastX = 0
-
+    var addingPossible =true
     pointList.forEach(element => {
-        if (wLeftX + element.w < sumWwish || (wLeftX + element.w >= sumWwish && lastX == element.x)) {
+        if ((wLeftX + element.w < sumWwish || (wLeftX + element.w >= sumWwish && lastX == element.x))   && addingPossible) {
             wLeftX += element.w
             lastX = element.x
             pointListLeftX.push(element)
         } else {
             pointListRightX.push(element)
+            addingPossible=false
         }
     });
 
     var verticalResult = { "x": lastX, "wSum": wLeftX, "pointListLeft": pointListLeftX, "pointListRight": pointListRightX }
 
     pointList.sort((a, b) => b.y - a.y)
-
+   
     var pointListUpY = []
     var pointListDownY = []
     var wLeftY = 0
     var lastY = 0
-
+    addingPossible =true
     pointList.forEach(element => {
-        if (wLeftY + element.w < sumWwish || (wLeftY + element.w >= sumWwish && lastY == element.y)) {
+       
+        if ((wLeftY + element.w < sumWwish || (wLeftY + element.w >= sumWwish && lastY == element.y)) && addingPossible) {
             wLeftY += element.w
             lastY = element.y
             pointListUpY.push(element)
+            
         } else {
             pointListDownY.push(element)
+            addingPossible=false
         }
     });
 

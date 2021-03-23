@@ -18,7 +18,7 @@ export function NavbarApp (){
     return (
         <Navbar className="sticky-top navbar-fill " collapseOnSelect expand="md" bg="dark" variant="dark">
             <div className="container-fluid">
-            <Navbar.Brand>
+            <Navbar.Brand onClick={() => pushHistory("/")} type="button">
             <img 
                 alt="Logo"                        
                 src={logo}  
@@ -29,10 +29,7 @@ export function NavbarApp (){
             SCM Algorithm
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav" float="right">
-                <Nav className="">
-                    <Nav.Link onClick={() => pushHistory("/")} >Home</Nav.Link>  
-                </Nav>              
+            <Navbar.Collapse id="basic-navbar-nav" float="right">                          
                 <Nav>
                     <NavDropdown title="Volkswirt.">
                         <NavDropdown.Item onClick={() => pushHistory("/bodennutzung")}>Bodennutzung</NavDropdown.Item>

@@ -16,14 +16,16 @@ import ImageDualAscentVerfahren3 from "../../assets/image/DualAscentVerfahren3.P
 function DualAscentVerfahren() {
 
     const refApiTextExample = useRef(null)
+    const refApiTextExample2 = useRef(null)
     const [state, setState] = useState("");
     const apiExample = '{"list":[[0,4,6,12,3],[2,6,3,4,0],[4,9,10,12,8],[6,0,12,3,7],[9,12,0,3,8],[12,8,4,0,6]],"kosten":[12,6,9,9,12]}';
+    const apiExample2 = '{"list":[[4,9,3],[11,2,7],[5,6,4],[2,4,6],[10,3,6]],"sList":[6,4,7],"vList":[4,7,5,4,6],"iteration":2}';
     const { register, handleSubmit, watch, errors } = useForm();
 
-    function copyToClipboard() {
-        console.log(refApiTextExample["current"].innerText, refApiTextExample)
+    function copyToClipboard(refApiText) {
+        console.log(refApiText["current"].innerText, refApiText)
         const el = document.createElement('textarea');
-        el.value = refApiTextExample["current"].innerText;
+        el.value = refApiText["current"].innerText;
         document.body.appendChild(el);
         el.select();
         document.execCommand('copy');
@@ -121,13 +123,28 @@ function DualAscentVerfahren() {
                                     <tr>
                                         <td>kosten</td>
                                         <td></td>
-                                        <td>1D-Array</td>
+                                        <td>1D-Array: Variante 1</td>
                                     </tr> 
                                     <tr>
                                         <td>list</td>
                                         <td></td>
                                         <td>2D-Array</td>
-                                    </tr>                                    
+                                    </tr>   
+                                    <tr>
+                                        <td>sList</td>
+                                        <td></td>
+                                        <td>1D-Array: Variante 2 nur für 3,4 oder 5 Werte möglich</td>
+                                    </tr>    
+                                    <tr>
+                                        <td>vList</td>
+                                        <td></td>
+                                        <td>1D-Array: Variante 2</td>
+                                    </tr>   
+                                    <tr>
+                                        <td>iteration</td>
+                                        <td></td>
+                                        <td>Nummer der zu berechende Iteration (beginnt bei 1)</td>
+                                    </tr>                                 
                                 </tbody>
                             </Table>
                         </div>
@@ -135,11 +152,22 @@ function DualAscentVerfahren() {
                             <Card>
                                 <Card.Body className=" mb-0 mt-0 pt-2 pb-2 align-items-center">
                                     <div>
-                                        <p className="mb-0 pb-0 text-primary"><small>test</small></p>
+                                        <p className="mb-0 pb-0 text-primary"><small>Starting Dual ascent at first iteration</small></p>
                                     </div>
                                     <div className="d-flex">
                                         <p ref={refApiTextExample} className="mb-0 pb-0 mr-auto">{apiExample}</p>
-                                        <Button className="btn-priamary btn-sm" onClick={() => { copyToClipboard() }}>Copy</Button>
+                                        <Button className="btn-priamary btn-sm" onClick={() => { copyToClipboard(refApiTextExample) }}>Copy</Button>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                            <Card>
+                                <Card.Body className=" mb-0 mt-0 pt-2 pb-2 align-items-center">
+                                    <div>
+                                        <p className="mb-0 pb-0 text-primary"><small>Berechnung falls nur Iteration x gegeben</small></p>
+                                    </div>
+                                    <div className="d-flex">
+                                        <p ref={refApiTextExample2} className="mb-0 pb-0 mr-auto">{apiExample2}</p>
+                                        <Button className="btn-priamary btn-sm" onClick={() => { copyToClipboard(refApiTextExample2) }}>Copy</Button>
                                     </div>
                                 </Card.Body>
                             </Card>

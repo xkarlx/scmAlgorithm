@@ -36,7 +36,8 @@ import Konstruktionsheuristik from "../views/diskreteStandortplanung/konstruktio
 
 
 import NavbarApp from '../components/navbar/navbar';
-
+import Impressum from "../views/impressum";
+import Datenschutz from "../views/datenschutz";
 
 
 /**
@@ -83,7 +84,12 @@ function RoutesApp() {
                 <Route path="/kompaktheitsmasse" exact component={Kompaktheitsmasse} />
                 <Route path="/recursive_partioning_algorithmus" exact component={RecursivePartioningAlgorithmus} />
 
-                 <Route path="/template" exact className=" " component={Template} />              
+                <Route path="/impressum" exact component={Impressum} />
+                <Route path="/datenschutz" exact component={Datenschutz} />
+
+           
+                 <Route path="/template" exact className=" " component={Template} />     
+ 
                 <Route component={NoMatch} />
                
             </Switch>
