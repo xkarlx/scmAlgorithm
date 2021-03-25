@@ -27,7 +27,7 @@ exports.getDualAscentVerfahren = async (req, res, next) => {
         })
 
         var combinations = combinate(possebilityList);
-
+        
         var findFixCost = true
 
         var counting = 0
@@ -131,8 +131,9 @@ function checkResults(result, itertionNumber, sList, vList) {
 
     var givenSList = result.sList[itertionNumber - 1]
     var givenVList = result.vList[itertionNumber - 1]
+    
     var notEqual = false
-   
+    
     sList.forEach((element, i) => {
         if (givenSList[i] != element) {
             notEqual = true
@@ -391,7 +392,7 @@ exports.getGreedyHeuristik = async (req, res, next) => {
 
         while (!iterationFinished) {
             var keys = solutionSpace
-            console.log(solutionSpace)
+           
             if (iterationNumber == 0) {
                 for (var i = 0; i < inputDict[keys[0]].length; i++) {
                     var cList = []
@@ -449,7 +450,7 @@ exports.getGreedyHeuristik = async (req, res, next) => {
                     solutionSpace = solutionSpace.filter(value2 => value2 != key)
                 }
             })
-            console.log(wList[iterationNumber],deltaList[iterationNumber])
+         
             if (solutionSpace.length == 0) {
                 iterationFinished = true
             } else {

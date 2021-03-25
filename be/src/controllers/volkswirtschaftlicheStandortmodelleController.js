@@ -10,10 +10,10 @@ exports.getKostenminimalerWohnstandort = async (req, res, next) => {
         
         var V_wohnung_zentrum = r * req.body["Q"] * req.body["P_z"] / req.body["K"]
 
-        res.status(200).json({"C(d_opt)": Math.round(C_d*100)/100,
-                                "d_opt": Math.round(d_opt*100)/100,
-                                "r": Math.round(r*1000)/1000,
-                                "V_wohnung_zentrum" :  Math.round(V_wohnung_zentrum*100)/100
+        res.status(200).json({"C(d_opt)": Math.round(C_d*10000)/10000,
+                                "d_opt": Math.round(d_opt*10000)/10000,
+                                "r": Math.round(r*10000)/10000,
+                                "V_wohnung_zentrum" :  Math.round(V_wohnung_zentrum*10000)/10000
                     })
     }else{
         res.status(200).send({"message":"import not correct defined"});
@@ -93,7 +93,7 @@ exports.getModelHuff = async (req, res, next) => {
 
         locations.forEach(element => {
             element.P_EK = Math.round(element.A_EK / sumA_EK *10000)/10000
-            element.A_EK = Math.round(element.A_EK  *100)/100         
+            element.A_EK = Math.round(element.A_EK  *10000)/10000       
         })
 
         res.status(200).json({"locations": locations

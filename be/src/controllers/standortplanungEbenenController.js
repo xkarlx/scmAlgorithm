@@ -188,7 +188,7 @@ exports.get1MedianproblemeL2 = async (req, res, next) => {
                         delta_new = (f - f_new) / f
                         f = f_new
                         iteration_list.push({ "x": new_point.x, "y": new_point.y, "f": f_new, "delta": delta_new })
-                        console.log(delta, delta_new, delta >= delta_new)
+                       
                     } while (delta <= delta_new);
 
                     res.status(200).send({ "dominanz": ergDominanz, "dominanzFullfilled": true, "nr. iteration": iteration_list.length - 1, "final_iteration": iteration_list[iteration_list.length - 1], "iteration": iteration_list });
@@ -418,7 +418,7 @@ exports.get1CenterproblemeGewichtet = async (req, res, next) => {
     var pointList = [];
     if ("list" in inputJSON && "l_1" in inputJSON) {
         var transformPoints = inputJSON["l_1"];
-        console.log(transformPoints);
+       
         if (inputJSON["list"].length > 0) {
             pointList = inputJSON["list"]
 
@@ -562,9 +562,9 @@ exports.get1CenterproblemeL2 = async (req, res, next) => {
             
             
             possebilityList.forEach(element => {
-                element.m.x = Math.round(element.m.x*100)/100
-                element.m.y = Math.round(element.m.y*100)/100
-                element.m.r = Math.round(element.m.r*100)/100
+                element.m.x = Math.round(element.m.x*10000)/10000
+                element.m.y = Math.round(element.m.y*10000)/10000
+                element.m.r = Math.round(element.m.r*10000)/10000
             })
             
             var filteredList = possebilityList.filter(element => !element.m.ueberdeckung.some(element2 => element2==false)  )
