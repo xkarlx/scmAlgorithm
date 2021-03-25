@@ -391,7 +391,7 @@ exports.getGreedyHeuristik = async (req, res, next) => {
 
         while (!iterationFinished) {
             var keys = solutionSpace
-
+            console.log(solutionSpace)
             if (iterationNumber == 0) {
                 for (var i = 0; i < inputDict[keys[0]].length; i++) {
                     var cList = []
@@ -445,11 +445,11 @@ exports.getGreedyHeuristik = async (req, res, next) => {
             }
 
             Object.entries(wList[iterationNumber]).forEach(([key, value]) => {
-                if (value < 0) {
+                if (value <= 0) {
                     solutionSpace = solutionSpace.filter(value2 => value2 != key)
                 }
             })
-
+            console.log(wList[iterationNumber],deltaList[iterationNumber])
             if (solutionSpace.length == 0) {
                 iterationFinished = true
             } else {
