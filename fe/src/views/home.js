@@ -177,8 +177,25 @@ function Home() {
                     </Card>
                    
                 </div>
+
+                <div className="col-12 mt-3">
+            <Card>
+                <Card.Header>
+                Quelle
+                </Card.Header>
+                <Card.Body>
+                    <h6>Vorlesung & Übung Standortplanung und strategisches Supply Chain Management</h6>
+                    <p className="mb-0 pb-0">Dozent: Prof. Dr. Stefan Nickel</p>
+                    <p className="mb-0 pb-0">Institut für Operations Research Diskrete Optimierung und Logistik</p>
+                    <p className="mb-0 pb-0">KIT: Karlsruher Institut für Technology</p>
+                    <p className="mb-0 pb-0">WS 20/21</p>
+                </Card.Body>
+            </Card>
+
+            </div>
                 
             </div>
+            
             <div className="col-12">
                 <Footer></Footer>
 
