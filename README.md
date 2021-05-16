@@ -55,4 +55,4 @@ docker-compose up
 
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://www.gnu.org/licenses/agpl-3.0.en.html)
