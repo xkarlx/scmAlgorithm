@@ -9,6 +9,6 @@ RUN npm install --production
 
 COPY ./be /server
 
-CMD ["npm","devStart"]
+CMD ["npm","start"]
 
 EXPOSE 5000

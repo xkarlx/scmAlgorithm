@@ -15,6 +15,8 @@ RUN npm install react-scripts@4.0.3 -g
 RUN npm install --silent
 RUN npm install --save node-sass
 
+RUN npm rebuild node-sass
+
 # add app
 COPY ./fe ./
 
