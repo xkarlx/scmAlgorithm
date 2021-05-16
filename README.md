@@ -2,6 +2,21 @@
 
 SCM Algorithm ist eine Fullstack entwicklung basierend auf React und Express. Die Algorithmen orientieren sich an der Vorlesung & Übung Standortplanung und strategisches Supply Chain Management (Dozent: Prof. Dr. Stefan Nickel, WS 20/21, KIT) 
 
+## Quelle
+
+- Vorlesung & Übung Standortplanung und strategisches Supply Chain Management
+- Dozent: Prof. Dr. Stefan Nickel
+- Institut für Operations Research Diskrete Optimierung und Logistik
+- KIT: Karlsruher Institut für Technology
+- WS 20/21
+
+## Vorworte
+
+- die App ist in 2 Teile aufgeteilt. 
+    - im fe Ordner liegt ein React-App.
+    - im be Ordner liegt eine Express-App
+
+
 ## Installation
 
 Installieren von [NodeJs (14.16.1)](https://nodejs.org/en/download/).
