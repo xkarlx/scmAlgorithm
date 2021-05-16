@@ -53,11 +53,6 @@ Zum Starten des Dockers:
 docker-compose up
 ```
 
-## Quellen
-Vorlesung & Übung Standortplanung und strategisches Supply Chain Management
-Dozent: Prof. Dr. Stefan Nickel
-WS 20/21
-KIT
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
