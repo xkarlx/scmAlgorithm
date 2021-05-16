@@ -23,10 +23,10 @@ Installieren von [NodeJs (14.16.1)](https://nodejs.org/en/download/).
 
 ```bash
 cd fe
-npm ci
+npm install
 
 cd be
-npm ci
+npm install
 ```
 
 Starten
