@@ -29,6 +29,9 @@ cd be
 npm install
 ```
 
+im be folrder .env.development in .env umbenennen
+
+
 Starten
 
 ```bash
